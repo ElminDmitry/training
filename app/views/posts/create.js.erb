@@ -1,0 +1,15 @@
+//$(function() {
+//  $(".submit_button").on("click", function(event) {
+//    event.preventDefault();
+//    $.ajax({
+//      type: "POST",
+//      url: "posts/create",
+//      data: "posts/index",
+//      success: function(result) {
+//        // Append the result to a table or list, $("list").append(result)
+//      },
+//    });
+//  });
+//});
+
+$(".submit_button").innerHTML += "<%= escape_javascript(render(:partial => 'posts/form')) %>"
