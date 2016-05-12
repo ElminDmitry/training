@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order("created_at desc").page(params[:page]).per(50)
+    @posts = Post.all.order("created_at desc").page(params[:page]).per(25)
   end
 
   # GET /posts/1
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    @posts = Post.all.order("created_at desc").page(params[:page]).per(25)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
