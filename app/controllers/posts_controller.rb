@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, except => [:show, :index]
   # GET /posts
   # GET /posts.json
   def index
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
   end
-
+  #TODO: make more cool code
   # POST /posts
   # POST /posts.json
   def create
@@ -57,9 +57,10 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
+    @dpost.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.json { head :no_content }
       format.json { head :no_content }
     end
   end
